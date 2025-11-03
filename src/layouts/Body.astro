@@ -1,0 +1,397 @@
+---
+import { rutaWhatsappSoporte } from '../ts/constants';
+
+//Listado de servicios con imágenes
+let listaServicios = [
+    {
+        'id': 'vigilancia',
+        'titulo': 'Vigilancia física fija y móvil',
+        'descripcion': 'Prestamos servicios de vigilancia con personal altamente capacitado, tanto en puestos fijos como en recorridos móviles, garantizando la protección permanente de instalaciones, bienes y personas.',
+        'imagen': '/guarda-seguridad-privada.jpg'
+    },
+    {
+        'id': 'escoltas',
+        'titulo': 'Escoltas personales y vehiculares',
+        'descripcion': 'Brindamos acompañamiento y protección especializada a personas y vehículos, con personal entrenado en protocolos de seguridad preventiva y reacción inmediata.',
+        'imagen': '/supervisores.jpg'
+    },
+    {
+        'id': 'electronica',
+        'titulo': 'Seguridad electrónica y monitoreo',
+        'descripcion': 'Ofrecemos soluciones tecnológicas en sistemas de alarmas, control de accesos, cámaras de vigilancia y monitoreo remoto, que fortalecen la protección de infraestructuras y activos.',
+        'imagen': '/monitoreo_camaras.jpg'
+    },
+    {
+        'id': 'canina',
+        'titulo': 'Vigilancia canina especializada',
+        'descripcion': 'Contamos con unidades caninas entrenadas para labores de defensa controlada, detección de narcóticos y explosivos, complementando de manera efectiva la seguridad física.',
+        'imagen': '/canino_delthac1.png'
+    },
+    {
+        'id': 'asesoria',
+        'titulo': 'Asesoría, investigación y estudios de confiabilidad',
+        'descripcion': 'Realizamos evaluaciones de seguridad, procesos de poligrafía, verificación de antecedentes y análisis de confiabilidad del personal, con el fin de apoyar a las organizaciones en la toma de decisiones estratégicas.',
+        'imagen': '/asesoria.jpeg'
+    },
+    {
+        'id': 'investigacion',
+        'titulo': 'Investigación y análisis de riesgos',
+        'descripcion': 'Desarrollamos estudios integrales de seguridad, análisis de vulnerabilidades y planes de protección personalizados para cada organización.',
+        'imagen': '/analisis_riesgos.jpg'
+    }
+];
+
+//Listado de ubicaciones con maps
+let listaUbicaciones = [
+    {
+        'idZona' : '1', 
+        'zona' : 'Bogotá',
+        'direccion' : 'Cra. 22 #85A - 42, Bogotá',
+        'src' : 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.552668471849!2d-74.06365072552714!3d4.673537941893499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9af10c785da5%3A0xc00633a46d68e60f!2sCra.%2022%20%2385A%20-%2042%2C%20Bogot%C3%A1!5e0!3m2!1sen!2sco!4v1756238585277!5m2!1sen!2sco'
+    },
+    {
+        'idZona' : '2', 
+        'zona' : 'Bucaramanga',
+        'direccion' : 'Centro Empresarial Chichamocha, Cl 36 #31-39, Mejoras Públicas',
+        'src' : 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.020432054863!2d-73.11611442551605!3d7.1236291158996226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e681560eff7adeb%3A0x949020bb009275b7!2sCentro%20Empresarial%20Chicamocha%2C%20Cl%2036%20%2331-39%2C%20Mejoras%20P%C3%BAblicas%2C%20Bucaramanga%2C%20Santander!5e0!3m2!1sen!2sco!4v1756238744256!5m2!1sen!2sco'
+    },
+    {
+        'idZona' : '3', 
+        'zona' : 'Cartagena',
+        'direccion' : 'Transversal 68 A, San Pedro Mártir, Cartagena de Indias, Provincia de Cartagena, Bolívar',
+        'src' : 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3924.5872123153886!2d-75.49190092548744!3d10.374852566473548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef6267898f03fcb%3A0xe06fe5234d4b356!2sCra%2068A%2C%20Provincia%20de%20Cartagena%2C%20Bol%C3%ADvar!5e0!3m2!1sen!2sco!4v1756245425394!5m2!1sen!2sco'
+    },
+    {
+        'idZona' : '4', 
+        'zona' : 'Barranquilla',
+        'direccion' : 'Cra. 42 #81-27, Nte. Centro Histórico, Barranquilla, Atlántico',
+        'src' : 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.659098479014!2d-74.82857992401465!3d10.9890834273445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef42d1cdcc7e251%3A0xeba6c01228b0d17d!2sCra.%2042%20%2381-27%2C%20Nte.%20Centro%20Historico%2C%20Barranquilla%2C%20Atl%C3%A1ntico!5e0!3m2!1sen!2sco!4v1756245324702!5m2!1sen!2sco'
+    },
+    {
+        'idZona' : '5', 
+        'zona' : 'Cúcuta',
+        'direccion' : 'Av. 17a #35, Barrio Atalaya, Cúcuta, Norte de Santander',
+        'src' : 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.8957631209014!2d-72.52123522551054!3d7.9059574055573725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e664561beac1a77%3A0x5be8d00ba6c9f951!2sAv.%2017a%20%233-5%2C%20Barrio%20Atalaya%2C%20C%C3%BAcuta%2C%20Norte%20de%20Santander!5e0!3m2!1sen!2sco!4v1756239184561!5m2!1sen!2sco'
+    }
+];
+---
+
+<main id="Inicio">
+    <section class="clsQuienesSomos" id="clsQuienesSomos">
+        <div class="textContainer" id="headerTitle">
+            <div class="qsTitulo">
+                <h1 class="mainTitle">Seguridad Inteligente al Servicio de su </h1>
+                <span class="typingText">Tranquilidad</span>
+            </div>
+            <div class="qsTextContainer">
+                <p>Somos una compañía especializada en la prestación integral de servicios de vigilancia y seguridad privada, con capacidad para operar en todo el territorio nacional y desarrollar soluciones de seguridad que generan las mejores condiciones para el óptimo crecimiento de nuestros clientes.</p>  
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios Section -->
+    <section id="Servicios" class="services-section" aria-labelledby="services-title">
+        <div class="container">
+            <header class="section-header">
+                <h2 id="services-title" class="section-title">Nuestros Servicios</h2>
+                <p class="section-subtitle">
+                    En Delthac1 Seguridad prestamos la totalidad de servicios en seguridad física; tenemos nuestra licencia de funcionamiento que nos permite la operación de servicios en diferentes sectores.
+                </p>
+            </header>
+            
+            <div class="services-grid">
+                {listaServicios.map((servicio) => (
+                    <article class="service-card" data-service={servicio.id}>
+                        <div class="service-card-header">
+                            <div class="service-header-bg" style={`background-image: url(${servicio.imagen})`}></div>
+                        </div>
+                        <div class="service-card-body">
+                            <h3>{servicio.titulo}</h3>
+                            <p>{servicio.descripcion}</p>
+                        </div>
+                    </article>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contacto" class="cta-section" aria-labelledby="cta-title">
+        <div class="container">
+            <div class="cta-content">
+                <h2 id="cta-title" class="cta-title">¿Estás interesado en uno de nuestros servicios?</h2>
+                <p class="cta-description">
+                    Contáctanos hoy mismo para recibir una asesoría personalizada y descubrir cómo podemos ayudarte a mantener tu seguridad y tranquilidad.
+                </p>
+                <div class="cta-actions">
+                    <a href={rutaWhatsappSoporte} target="_blank" class="btn btn-primary btn-large" aria-label="Redireccion Soporte WhatsApp">
+                        Solicitar Cotización
+                    </a>
+                    <a href="tel:+573118093317" class="btn btn-gold-outline btn-large" aria-label="Llamada a soporte en linea">
+                        Llamar Ahora
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clientes Section  -->
+    <section class="clientes-section">
+        <h2>Confían en Nosotros</h2>
+        <div class="clientesContainer">
+             <div class="slider" style="
+                --width: 200px;
+                --height: 100px;
+                --quantity: 9;
+            ">
+                <div class="list">
+                    <div class="item empresaAsociada" style="--position: 1"><img src="/empresas_asociadas/logo_delthac_plateado.png" alt="" loading="lazy"></div>
+                    <div class="item empresaAsociada" style="--position: 2"><img src="/empresas_asociadas/logo_delthac_plateado.png" alt="" loading="lazy"></div>
+                    <div class="item empresaAsociada" style="--position: 3"><img src="/empresas_asociadas/logo_delthac_plateado.png" alt="" loading="lazy"></div>
+                    <div class="item empresaAsociada" style="--position: 4"><img src="/empresas_asociadas/logo_delthac_plateado.png" alt="" loading="lazy"></div>
+                    <div class="item empresaAsociada" style="--position: 5"><img src="/empresas_asociadas/logo-qs1.png" alt="" loading="lazy"></div>
+                    <div class="item empresaAsociada" style="--position: 6"><img src="/empresas_asociadas/logo-qs1.png" alt="" loading="lazy"></div>
+                    <div class="item empresaAsociada" style="--position: 7"><img src="/empresas_asociadas/logo-qs1.png" alt="" loading="lazy"></div>
+                    <div class="item empresaAsociada" style="--position: 8"><img src="/empresas_asociadas/logo-qs1.png" alt="" loading="lazy"></div>
+                    <div class="item empresaAsociada" style="--position: 9"><img src="/empresas_asociadas/logo-qs1.png" alt="" loading="lazy"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nosotros Section -->
+    <section id="Nosotros" class="about-section" aria-labelledby="about-title">
+        <div class="container">
+            <header class="section-header">
+                <h2 id="services-title" class="section-title">Más de Tres Décadas Protegiendo lo que Más Importa</h2>
+            </header>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Brindamos servicios de vigilancia y seguridad privada en las principales ciudades del país, respaldados por una trayectoria de excelencia y confianza.</p>
+                    <p>Somos una empresa empleadora con un profundo sentido humano, conformada por personal altamente calificado y diverso, comprometido con la sostenibilidad y el bienestar de la comunidad.</p>
+                    <p>Con nosotros, puede sentirse tranquilo y seguro: trabajamos día y noche para prevenir riesgos, disuadir amenazas y garantizar la integridad de su entorno.</p>
+                    <p>Nuestra propuesta combina la presencia constante de nuestro equipo con sistemas modernos de seguridad, formando una red de vigilancia discreta pero siempre activa. Así protegemos sin interrumpir la tranquilidad, permaneciendo alerta las 24 horas.</p>
+                </div>
+
+                <div class="about-video">
+                    <div class="video-container">
+                        <video autoplay loop muted playsinline preload="none" class="background-video">
+                            <source src="/videoFondo.mp4" type="video/mp4">
+                            Tu navegador no soporta el elemento de video.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Ubicaciones Section -->
+    <section id="Ubicaciones" class="locations-section" aria-labelledby="locations-title">
+        <div class="container">
+            <header class="section-header">
+                <h2 id="locations-title" class="section-title">¿Dónde Nos Ubicamos?</h2>
+            </header>
+            
+            <div class="locations-content">
+                <div class="locations-list">
+                    <h3>Encuéntranos en:</h3>
+                    <div class="tapTarget">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-index" viewBox="0 0 16 16">
+                                <path d="M6.75 1a.75.75 0 0 1 .75.75V8a.5.5 0 0 0 1 0V5.467l.086-.004c.317-.012.637-.008.816.027.134.027.294.096.448.182.077.042.15.147.15.314V8a.5.5 0 1 0 1 0V6.435l.106-.01c.316-.024.584-.01.708.04.118.046.3.207.486.43.081.096.15.19.2.259V8.5a.5.5 0 0 0 1 0v-1h.342a1 1 0 0 1 .995 1.1l-.271 2.715a2.5 2.5 0 0 1-.317.991l-1.395 2.442a.5.5 0 0 1-.434.252H6.035a.5.5 0 0 1-.416-.223l-1.433-2.15a1.5 1.5 0 0 1-.243-.666l-.345-3.105a.5.5 0 0 1 .399-.546L5 8.11V9a.5.5 0 0 0 1 0V1.75A.75.75 0 0 1 6.75 1M8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v5.34l-1.2.24a1.5 1.5 0 0 0-1.196 1.636l.345 3.106a2.5 2.5 0 0 0 .405 1.11l1.433 2.15A1.5 1.5 0 0 0 6.035 16h6.385a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5 5 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.6 2.6 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046zm2.094 2.025"/>
+                            </svg>
+                            <small>*Presiona para buscar la ubicación en el mapa</small>
+                        </div>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mouse mouseScroll" viewBox="0 0 16 16">
+                                <path d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3m4 8a4 4 0 0 1-8 0V5a4 4 0 1 1 8 0zM8 0a5 5 0 0 0-5 5v6a5 5 0 0 0 10 0V5a5 5 0 0 0-5-5"/>
+                            </svg>
+                            <small>*Desliza para ver todas las ubicaciones</small>
+                        </div>
+                    </div>
+                    
+                    <ul class="locations-ul">
+                        {listaUbicaciones.map((ubicacion) => (
+                            <li class="location-item" id={'zona_' + ubicacion.zona} data-zona={ubicacion.idZona}>
+                            <strong>
+                                {ubicacion.zona}{" "}
+                                {ubicacion.idZona == '1' ? (
+                                <small>📍 *Sede Principal</small>
+                                ) : null}
+                            </strong>
+                            <p>{ubicacion.direccion}</p>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                
+                <div class="cardMapContainer">
+                    <div class="card">
+                        <div class="tools">
+                            <div class="circle">
+                                <span class="red box"></span>
+                            </div>
+                            <div class="circle">
+                                <span class="yellow box"></span>
+                            </div>
+                            <div class="circle">
+                                <span class="green box"></span>
+                            </div>
+                            <div class="">
+                                <b>{listaUbicaciones[0].zona}</b>
+                            </div>
+                        </div>
+                        <div class="card_content">
+                            <div class="mapContainer">
+                                <iframe id="iframeMapaUbicacion" title="Mapa de ubicaciones de Delthac1" src={listaUbicaciones[0].src} style="border:0;" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="mapaGoogleUbicacion"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-whatsAppHelp">
+        <a href="#" id="btnGoHome" class="btnGoHome" aria-label="Redireccion a inicio de lading">
+            <div class="arrowUpContainer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
+                </svg>
+            </div>
+        </a>
+
+        <a href={rutaWhatsappSoporte} target="_blank" aria-label="Redireccion a soporte WhatsApp">
+            <div class="whatsAppHelp">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                    <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                </svg>
+            </div>
+        </a>
+        
+    </section>
+    
+</main>
+
+<!-- scripts para scrollReveal -->
+<script>
+    ScrollReveal().reveal("#headerTitle", {
+        duration: 1200,
+        origin: "top",
+        distance: "50px",
+        interval: 200,
+        reset: false,
+    });
+    
+    ScrollReveal().reveal(".service-card", {
+        duration: 1200,
+        origin: "top",
+        distance: "50px",
+        interval: 200,
+        reset: false,
+    });
+
+    ScrollReveal().reveal(".empresaAsociada", {
+        duration: 1200,
+        origin: "rigth",
+        distance: "70px",
+        interval: 200,
+        reset: false,
+    });    
+    
+    let objBtnGoHome = document.getElementById('btnGoHome') as HTMLDivElement;
+    let vwInicial = window.innerHeight;
+    let isVisible = false;
+    
+    // Función para manejar la visibilidad del botón con throttling
+    function handleScroll() {
+        const posicion = window.scrollY;
+        const shouldBeVisible = posicion > vwInicial - 300;
+        
+        if (shouldBeVisible && !isVisible) {
+            objBtnGoHome?.classList.add('visible');
+            isVisible = true;
+        } else if (!shouldBeVisible && isVisible) {
+            objBtnGoHome?.classList.remove('visible');
+            isVisible = false;
+        }
+    }
+    
+    // Throttling para mejorar el rendimiento del scroll
+    let ticking = false;
+    document.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                handleScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+
+
+    // Función para cambiar la ubicación en el mapa
+    function cambiarUbicacionMaps(idZona: string) {
+        // Definir las ubicaciones directamente en el script
+        const ubicaciones = [
+            {
+                'idZona': '1',
+                'zona': 'Bogotá',
+                'src': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.552668471849!2d-74.06365072552714!3d4.673537941893499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9af10c785da5%3A0xc00633a46d68e60f!2sCra.%2022%20%2385A%20-%2042%2C%20Bogot%C3%A1!5e0!3m2!1sen!2sco!4v1756238585277!5m2!1sen!2sco'
+            },
+            {
+                'idZona': '2',
+                'zona': 'Bucaramanga',
+                'src': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.020432054863!2d-73.11611442551605!3d7.1236291158996226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e681560eff7adeb%3A0x949020bb009275b7!2sCentro%20Empresarial%20Chicamocha%2C%20Cl%2036%20%2331-39%2C%20Mejoras%20P%C3%BAblicas%2C%20Bucaramanga%2C%20Santander!5e0!3m2!1sen!2sco!4v1756238744256!5m2!1sen!2sco'
+            },
+            {
+                'idZona': '3',
+                'zona': 'Cartagena',
+                'src' : 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3924.5872123153886!2d-75.49190092548744!3d10.374852566473548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef6267898f03fcb%3A0xe06fe5234d4b356!2sCra%2068A%2C%20Provincia%20de%20Cartagena%2C%20Bol%C3%ADvar!5e0!3m2!1sen!2sco!4v1756245425394!5m2!1sen!2sco'
+            },
+            {
+                'idZona': '4',
+                'zona': 'Barranquilla',
+                'src' : 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.659098479014!2d-74.82857992401465!3d10.9890834273445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef42d1cdcc7e251%3A0xeba6c01228b0d17d!2sCra.%2042%20%2381-27%2C%20Nte.%20Centro%20Historico%2C%20Barranquilla%2C%20Atl%C3%A1ntico!5e0!3m2!1sen!2sco!4v1756245324702!5m2!1sen!2sco'
+            },
+            {
+                'idZona': '5',
+                'zona': 'Cúcuta',
+                'src': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.8957631209014!2d-72.52123522551054!3d7.9059574055573725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e664561beac1a77%3A0x5be8d00ba6c9f951!2sAv.%2017a%20%233-5%2C%20Barrio%20Atalaya%2C%20C%C3%BAcuta%2C%20Norte%20de%20Santander!5e0!3m2!1sen!2sco!4v1756239184561!5m2!1sen!2sco'
+            }
+        ];
+        
+        // Buscar la ubicación en el array
+        const ubicacion = ubicaciones.find(ubi => ubi.idZona === idZona);
+        
+        if (ubicacion) {
+            // Actualizar el título en la tarjeta del mapa
+            const tituloMapa = document.querySelector('.tools b');
+            if (tituloMapa) {
+                tituloMapa.textContent = ubicacion.zona;
+            }
+            
+            // Actualizar el iframe del mapa
+            const objIframeMapaUbicacion = document.getElementById('iframeMapaUbicacion') as HTMLIFrameElement;
+            if (objIframeMapaUbicacion) {
+                objIframeMapaUbicacion.src = ubicacion.src;
+            }
+        }
+    }
+
+    // Agregar event listeners a todos los elementos de ubicación
+    document.addEventListener('DOMContentLoaded', () => {
+        const locationItems = document.querySelectorAll('.location-item');
+        
+        locationItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const idZona = item.getAttribute('data-zona');
+                if (idZona) {
+                    cambiarUbicacionMaps(idZona);
+                }
+            });
+        });
+    });
+</script>

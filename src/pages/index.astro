@@ -1,0 +1,32 @@
+---
+//Componentes
+import Header from "../layouts/Header.astro"
+import Body from "../layouts/Body.astro"
+import Footer from "../layouts/Footer.astro"
+
+//Estilos
+import "../styles/globalStyles.css";
+import "../styles/header.css";
+import "../styles/body.css";
+import "../styles/footer.css";
+---
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content="Compañía especializada en la prestación integral de servicios de vigilancia y seguridad privada.">
+		<meta property="og:title" content="Delthac1 Seguridad">
+		<meta property="og:description" content="Compañía especializada en la prestación integral de servicios de vigilancia y seguridad privada.">
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://delthac1.com/">
+		<script src="https://unpkg.com/scrollreveal"></script>
+		<title>Delthac1 Seguridad</title>
+	</head>
+	<body>
+		<Header></Header>
+		<Body></Body>
+		<Footer></Footer>
+	</body>
+</html>

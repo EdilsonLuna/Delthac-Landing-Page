@@ -1,0 +1,303 @@
+:root{
+    --red-background : rgb(119, 23, 16);
+    --red-light: #b91c1c;
+    --color-gold: #b9a570;
+
+    /* Colores principales - Paleta basada en rgb(119, 23, 16) */
+    --color-primary: rgb(119, 23, 16);        /* Rojo oscuro principal */
+    --color-primary-light: rgb(158, 42, 35);   /* Rojo más claro */
+    --color-primary-dark: rgb(89, 17, 12);     /* Rojo más oscuro */
+    --color-secondary: rgb(139, 69, 19);       /* Marrón rojizo */
+    --color-accent: rgb(220, 38, 38);          /* Rojo vibrante para CTAs */
+    --color-accent-light: rgb(239, 68, 68);    /* Rojo más claro */
+
+    --color-blue-darkest: #15202e;
+    --color-blue-darker:  #1c2b3a;
+    --color-blue-dark:    #243647;
+    --color-blue-mid:     #2a3d53;
+    --color-blue-light:   #2f435b;
+
+    /* Colores azul rey secundarios */
+    --color-blue-darkest: #15202e;
+    --color-blue-darker:  #1c2b3a;
+    --color-blue-dark:    #243647;
+    --color-blue-mid:     #2a3d53;
+    --color-blue-light:   #2f435b;
+    
+    /* Colores neutros - Adaptados a la paleta roja */
+    --color-white: #ffffff;
+    --color-gray-50: #f5f5f5;                   /* Rojo muy claro */
+    --color-gray-100: #fee2e2;                  /* Rojo claro */
+    --color-gray-200: #fecaca;                  /* Rojo medio claro */
+    --color-gray-300: #fca5a5;                  /* Rojo medio */
+    --color-gray-400: #f87171;                  /* Rojo */
+    --color-gray-500: #ef4444;                  /* Rojo más intenso */
+    --color-gray-600: #dc2626;                  /* Rojo oscuro */
+    --color-gray-700: #b91c1c;                  /* Rojo muy oscuro */
+    --color-gray-800: #991b1b;                  /* Rojo muy oscuro */
+    --color-gray-900: #7f1d1d;                  /* Rojo casi negro */
+    
+    /* Tipografía */
+    --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-family-secondary: 'Inter', system-ui, sans-serif;
+    
+    /* Tamaños de fuente */
+    --font-size-xs: 0.75rem;      /* 12px */
+    --font-size-sm: 0.875rem;     /* 14px */
+    --font-size-base: 1rem;       /* 16px */
+    --font-size-lg: 1.125rem;     /* 18px */
+    --font-size-xl: 1.25rem;      /* 20px */
+    --font-size-2xl: 1.5rem;      /* 24px */
+    --font-size-3xl: 1.875rem;    /* 30px */
+    --font-size-4xl: 2.25rem;     /* 36px */
+    --font-size-5xl: 3rem;        /* 48px */
+    --font-size-6xl: 3.75rem;     /* 60px */
+    
+    /* Pesos de fuente */
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+    
+    /* Espaciado */
+    --spacing-xs: 0.25rem;        /* 4px */
+    --spacing-sm: 0.5rem;         /* 8px */
+    --spacing-md: 1rem;           /* 16px */
+    --spacing-lg: 1.5rem;         /* 24px */
+    --spacing-xl: 2rem;           /* 32px */
+    --spacing-2xl: 3rem;          /* 48px */
+    --spacing-3xl: 4rem;          /* 64px */
+    --spacing-4xl: 6rem;          /* 96px */
+    
+    /* Bordes y sombras */
+    --border-radius-sm: 0.25rem;   /* 4px */
+    --border-radius-md: 0.5rem;    /* 8px */
+    --border-radius-lg: 0.75rem;   /* 12px */
+    --border-radius-xl: 1rem;      /* 16px */
+    --border-radius-2xl: 1.5rem;   /* 24px */
+    
+    --shadow-sm: 0 1px 2px 0 rgb(119 23 16 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(119 23 16 / 0.1), 0 2px 4px -2px rgb(119 23 16 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(119 23 16 / 0.1), 0 4px 6px -4px rgb(119 23 16 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(119 23 16 / 0.1), 0 8px 10px -6px rgb(119 23 16 / 0.1);
+    
+    /* Transiciones */
+    --transition-fast: 150ms ease-in-out;
+    --transition-normal: 250ms ease-in-out;
+    --transition-slow: 350ms ease-in-out;
+    
+    /* Breakpoints */
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-2xl: 1536px;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,"Helvetica Neue", Arial, sans-serif;
+}
+
+header{
+    z-index: 9999;
+}
+
+
+/* ===== TIPOGRAFÍA ===== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+    /* color: var(--color-gray-900); */
+    margin-bottom: var(--spacing-md);
+}
+
+h1 {
+    font-size: var(--font-size-5xl);font-size: 2rem;
+    text-align: center;
+    font-weight: var(--font-weight-extrabold);
+}
+
+h2 {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+}
+
+h3 {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-semibold);
+}
+
+h4 {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+}
+
+h5 {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-medium);
+}
+
+h6 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    text-decoration: none;
+    border: 2px solid transparent;
+    border-radius: var(--border-radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    user-select: none;
+    white-space: nowrap;
+}
+
+.btn:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Variantes de botones */
+.btn-primary {
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+    border-color: var(--color-primary-dark);
+}
+
+.btn-header-page{
+    padding: var(--spacing-sm);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-header-page:hover{
+    transform: scale(1.09);
+    box-shadow: 0 8px 8px -4px rgba(119, 23, 16, 0.7), 0 4px 12px -4px rgba(119, 23, 16, 0.7);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: white;
+    border-color: var(--color-primary);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-border-gold{
+    border-color: var(--color-gold);
+}
+
+/* Botón dorado basado en --color-gold */
+.btn-gold {
+    background-color: #8b7355; /* Versión más oscura del dorado */
+    color: var(--color-white);
+    border-color: #8b7355;
+}
+
+.btn-gold:hover {
+    background-color: var(--color-gold); /* Dorado más claro en hover */
+    border-color: var(--color-gold);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-gold:active {
+    transform: translateY(0);
+}
+
+.btn-gold:focus {
+    outline: 2px solid #8b7355;
+    outline-offset: 2px;
+}
+
+/* Botón dorado outline (sin relleno) */
+.btn-gold-outline {
+    background-color: transparent;
+    color: var(--color-gold);
+    border-color: var(--color-gold);
+}
+
+.btn-gold-outline:hover {
+    background-color: var(--color-gold);
+    color: var(--color-white);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-gold-outline:active {
+    transform: translateY(0);
+}
+
+.btn-gold-outline:focus {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-3xl);
+}
+
+.section-title {
+    margin-bottom: var(--spacing-lg);
+    /* color: var(--color-gray-900); */
+}
+
+.section-subtitle {
+    font-size: var(--font-size-lg);
+    /* color: var(--color-gray-600); */
+    max-width: 600px;
+    margin: 0 auto;
+}
