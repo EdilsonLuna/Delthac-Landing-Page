@@ -1,0 +1,81 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../layouts/Header.astro";
+import Footer from "../layouts/Footer.astro";
+import BodyLayout from "../layouts/BodyLayout.astro";
+
+import "../styles/documentacion.css";
+import "../styles/periodico_ambiental.css";
+import "../styles/globalStyles.css";
+---
+
+<BaseLayout title="Periódico Ambiental Delthac1" description="Documentos y publicaciones ambientales de Delthac1 Seguridad">
+    <Header/>
+    <BodyLayout>
+        <div class="documentacion-container documentacion-ambiental">
+            
+            <div class="titleContainer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" fill="currentColor" class="bi bi-recycle" viewBox="0 0 16 16">
+                    <path d="M9.302 1.256a1.5 1.5 0 0 0-2.604 0l-1.704 2.98a.5.5 0 0 0 .869.497l1.703-2.981a.5.5 0 0 1 .868 0l2.54 4.444-1.256-.337a.5.5 0 1 0-.26.966l2.415.647a.5.5 0 0 0 .613-.353l.647-2.415a.5.5 0 1 0-.966-.259l-.333 1.242zM2.973 7.773l-1.255.337a.5.5 0 1 1-.26-.966l2.416-.647a.5.5 0 0 1 .612.353l.647 2.415a.5.5 0 0 1-.966.259l-.333-1.242-2.545 4.454a.5.5 0 0 0 .434.748H5a.5.5 0 0 1 0 1H1.723A1.5 1.5 0 0 1 .421 12.24zm10.89 1.463a.5.5 0 1 0-.868.496l1.716 3.004a.5.5 0 0 1-.434.748h-5.57l.647-.646a.5.5 0 1 0-.708-.707l-1.5 1.5a.5.5 0 0 0 0 .707l1.5 1.5a.5.5 0 1 0 .708-.707l-.647-.647h5.57a1.5 1.5 0 0 0 1.302-2.244z"/>
+                </svg>
+                <h1 class="documentacion-titulo titulo-ambiental">Periódico Ambiental 🌲</h1>
+            </div>
+            <p class="documentacion-descripcion descripcion-ambiental">Descarga documentos y publicaciones sobre temas ambientales y sostenibilidad 🍃🍃</p>
+            
+            <div class="tarjetas-grid">
+                <div class="tarjeta-documento tarjeta-ambiental">
+                    <div class="tarjeta-header">
+                        <div class="pdf-badge pdf-badge-ambiental">
+                            <svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                            </svg>
+                            <span>PDF</span>
+                        </div>
+                        <h3 class="documento-titulo">Periódico Ambiental Julio 2025</h3>
+                    </div>
+                    <p class="documento-descripcion">QUÉ ES EL RESIDUO CERO O TAMBIÉN LLAMADO ‘zero waste’</p>
+                    <div class="tarjeta-footer">
+                        <a href="/documentos_pdf/Periodico-Ambiental-JUL.pdf" download target="_blank" class="btn btn-ambiental btn-large" aria-label="Descargar PDF del Periódico Ambiental">
+                            <svg class="download-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"/>
+                            </svg>
+                            Descargar PDF
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de ejemplo para futuros documentos -->
+                <div class="tarjeta-documento tarjeta-ambiental">
+                    <div class="tarjeta-header">
+                        <div class="pdf-badge pdf-badge-ambiental">
+                            <svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                            </svg>
+                            <span>PDF</span>
+                        </div>
+                        <h3 class="documento-titulo">Certificación ISO 14001</h3>
+                    </div>
+                    <p class="documento-descripcion">Documentación de nuestro sistema de gestión ambiental certificado</p>
+                    <div class="tarjeta-footer">
+                        <a href="/documentos_pdf/Periodico-Ambiental-JUL.pdf" class="btn btn-ambiental-disabled btn-large" onclick="return false;">
+                            Próximamente
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </BodyLayout>
+    <Footer/>
+</BaseLayout>
+
+
+
+<script>
+    ScrollReveal().reveal(".tarjeta-documento", {
+        duration: 1200,
+        origin: "top",
+        distance: "50px",
+        interval: 200,
+        reset: false,
+    });
+</script>

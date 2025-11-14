@@ -16,13 +16,7 @@
     --color-blue-dark:    #243647;
     --color-blue-mid:     #2a3d53;
     --color-blue-light:   #2f435b;
-
-    /* Colores azul rey secundarios */
-    --color-blue-darkest: #15202e;
-    --color-blue-darker:  #1c2b3a;
-    --color-blue-dark:    #243647;
-    --color-blue-mid:     #2a3d53;
-    --color-blue-light:   #2f435b;
+    --color-blue-border: #2f435b24;
     
     /* Colores neutros - Adaptados a la paleta roja */
     --color-white: #ffffff;
@@ -36,6 +30,22 @@
     --color-gray-700: #b91c1c;                  /* Rojo muy oscuro */
     --color-gray-800: #991b1b;                  /* Rojo muy oscuro */
     --color-gray-900: #7f1d1d;                  /* Rojo casi negro */
+
+    /* Tonos base */
+    --color-green-dark: #2d5a2d;
+    --color-green-medium: #4a7c59;
+
+    /* Variaciones más claras */
+    --color-green-light: #6fa37e;
+    --color-green-lighter: #a9d0b5;
+
+    /* Variaciones más oscuras */
+    --color-green-darker: #1e3c1e;
+    --color-green-deep: #142614;
+
+    /* Neutrales complementarios */
+    --color-neutral-light: #f4f7f4;
+    --color-neutral-dark: #2a2a2a;
     
     /* Tipografía */
     --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -94,6 +104,14 @@
     --breakpoint-lg: 1024px;
     --breakpoint-xl: 1280px;
     --breakpoint-2xl: 1536px;
+}
+
+main.bodyLayout{
+    width: 100%;
+    left: 0;
+    top: 90px;
+    height: 100%;
+    padding-top: 90px;
 }
 
 html {
@@ -283,6 +301,28 @@ h6 {
 .btn-gold-outline:focus {
     outline: 2px solid var(--color-gold);
     outline-offset: 2px;
+}
+
+.btn-disabled{
+    background-color: var(--color-gray-200);
+    color: var(--color-gray-500);
+    border-color: var(--color-gray-200);
+    cursor: not-allowed;
+    opacity: 0.6;
+    box-shadow: none;
+}
+
+.btn-disabled:hover{
+    transform: none;
+    box-shadow: none;
+    background-color: var(--color-gray-200);
+    color: var(--color-gray-500);
+    border-color: var(--color-gray-200);
+    cursor: not-allowed;
+    opacity: 0.6;
+    box-shadow: none;
+    transform: none;
+    box-shadow: none;
 }
 
 .section-header {

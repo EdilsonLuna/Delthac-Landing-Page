@@ -1,0 +1,140 @@
+---
+import "../../styles/globalStyles.css";
+import "../../styles/servicios.css";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../layouts/Header.astro";
+import Footer from "../../layouts/Footer.astro";
+import BodyLayout from "../../layouts/BodyLayout.astro";
+
+export async function getStaticPaths() {
+  const servicios = [
+    { 
+      slug: "vigilancia", 
+      nombre: "Vigilancia física fija y móvil", 
+      descripcion: "Prestamos servicios de vigilancia con personal altamente capacitado, tanto en puestos fijos como en recorridos móviles, garantizando la protección permanente de instalaciones, bienes y personas.",
+      imagen: "/guarda-seguridad-privada.jpg",
+      detalles: [
+        "Personal capacitado en protocolos de seguridad",
+        "Vigilancia 24/7 en instalaciones fijas",
+        "Patrullaje móvil con rutas optimizadas",
+        "Control de acceso y verificación de identidades",
+        "Reportes detallados de incidentes",
+        "Coordinación con autoridades locales"
+      ]
+    },
+    { 
+      slug: "escoltas", 
+      nombre: "Escoltas personales y vehiculares", 
+      descripcion: "Brindamos acompañamiento y protección especializada a personas y vehículos, con personal entrenado en protocolos de seguridad preventiva y reacción inmediata.",
+      imagen: "/supervisores.jpg",
+      detalles: [
+        "Protección personal para ejecutivos VIP",
+        "Escoltas vehiculares con protocolos de seguridad",
+        "Personal entrenado en defensa personal",
+        "Rutas seguras y alternativas de emergencia",
+        "Comunicación constante con central de seguridad",
+        "Evaluación de riesgos en tiempo real"
+      ]
+    },
+    { 
+      slug: "electronica", 
+      nombre: "Seguridad electrónica y monitoreo", 
+      descripcion: "Ofrecemos soluciones tecnológicas en sistemas de alarmas, control de accesos, cámaras de vigilancia y monitoreo remoto, que fortalecen la protección de infraestructuras y activos.",
+      imagen: "/monitoreo_camaras.jpg",
+      detalles: [
+        "Sistemas de CCTV con monitoreo 24/7",
+        "Control de acceso biométrico y por tarjeta",
+        "Sistemas de alarmas contra intrusión",
+        "Monitoreo remoto desde dispositivos móviles",
+        "Grabación y almacenamiento en la nube",
+        "Integración con sistemas de seguridad existentes"
+      ]
+    },
+    { 
+      slug: "canina", 
+      nombre: "Vigilancia canina especializada", 
+      descripcion: "Contamos con unidades caninas entrenadas para labores de defensa controlada, detección de narcóticos y explosivos, complementando de manera efectiva la seguridad física.",
+      imagen: "/canino_delthac1.png",
+      detalles: [
+        "Perros entrenados en detección de explosivos",
+        "Unidades caninas para detección de narcóticos",
+        "Patrullaje canino en áreas de alto riesgo",
+        "Entrenamiento especializado para cada tipo de amenaza",
+        "Certificación internacional de unidades caninas",
+        "Coordinación con equipos de seguridad humana"
+      ]
+    },
+    { 
+      slug: "asesoria", 
+      nombre: "Asesoría, investigación y estudios de confiabilidad", 
+      descripcion: "Realizamos evaluaciones de seguridad, procesos de poligrafía, verificación de antecedentes y análisis de confiabilidad del personal, con el fin de apoyar a las organizaciones en la toma de decisiones estratégicas.",
+      imagen: "/asesoria.jpeg",
+      detalles: [
+        "Evaluaciones de seguridad integrales",
+        "Procesos de poligrafía certificados",
+        "Verificación de antecedentes penales",
+        "Análisis de confiabilidad del personal",
+        "Auditorías de seguridad empresarial",
+        "Consultoría en protocolos de seguridad"
+      ]
+    },
+    { 
+      slug: "investigacion", 
+      nombre: "Investigación y análisis de riesgos", 
+      descripcion: "Desarrollamos estudios integrales de seguridad, análisis de vulnerabilidades y planes de protección personalizados para cada organización.",
+      imagen: "/analisis_riesgos.jpg",
+      detalles: [
+        "Análisis de vulnerabilidades detallado",
+        "Evaluación de amenazas y riesgos",
+        "Planes de protección personalizados",
+        "Estudios de seguridad integrales",
+        "Recomendaciones de mejora continua",
+        "Seguimiento y monitoreo de implementación"
+      ]
+    },
+  ];
+
+  return servicios.map(servicio => ({
+    params: { slug: servicio.slug },
+    props: { servicio },
+  }));
+}
+
+const { servicio } = Astro.props;
+---
+
+<BaseLayout title={`${servicio.nombre} - Delthac1 Seguridad`} description={servicio.descripcion}>
+    <Header />
+    <BodyLayout>
+        <div class="servicio-detalle-container">
+            <div class="servicio-header">
+                <h1 class="servicio-titulo">{servicio.nombre}</h1>
+                <p class="servicio-descripcion">{servicio.descripcion}</p>
+            </div>
+            
+            <div class="servicio-content">
+                <div class="servicio-imagen-container">
+                    <div class="servicio-imagen" style={`background-image: url(${servicio.imagen})`}>
+                    </div>
+                </div>
+                
+                <div class="servicio-detalles">
+                    <h2 class="detalles-titulo">Características del Servicio</h2>
+                    <ul class="detalles-lista">
+                        {servicio.detalles.map((detalle) => (
+                            <li class="detalle-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                </svg>
+                                {detalle}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </BodyLayout>
+    <Footer />
+</BaseLayout>

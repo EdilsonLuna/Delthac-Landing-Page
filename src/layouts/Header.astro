@@ -1,3 +1,8 @@
+---
+import '../styles/header.css';
+import "../styles/globalStyles.css";
+---
+
 <header class="headerPage" id="headerPage">
     
     <div class="logoContainer">
@@ -9,22 +14,22 @@
     <div class="listRutasLocales" id="listRutasLocales">
         <ul class="nav-list" >
             <li class="nav-item">
-                <a href="#Servicios" class="nav-link colorGold" id="navlink" aria-label="Redireccion seccion de pagina">
+                <a href="/#Servicios" class="nav-link colorGold" id="navlink" aria-label="Redireccion seccion de pagina">
                     Servicios
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#Nosotros" class="nav-link colorGold" id="navlink" aria-label="Redireccion seccion de pagina">
+                <a href="/#Nosotros" class="nav-link colorGold" id="navlink" aria-label="Redireccion seccion de pagina">
                     Nosotros
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#Ubicaciones" class="nav-link colorGold" id="navlink" aria-label="Redireccion seccion de pagina">
+                <a href="/#Ubicaciones" class="nav-link colorGold" id="navlink" aria-label="Redireccion seccion de pagina">
                     Ubicaciones
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#Contacto" class="nav-link colorGold" id="navlink" aria-label="Redireccion seccion de pagina">
+                <a href="/#Contacto" class="nav-link colorGold" id="navlink" aria-label="Redireccion seccion de pagina">
                     Contacto
                 </a>
             </li>
@@ -36,20 +41,20 @@
                     </svg>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="/documentos_pdf/pdfPruebas.pdf" target="_blank" class="dropdown-item colorGold">Documentos</a></li>
-                    <li><a href="/documentos_pdf/pdfPruebas.pdf" target="_blank" class="dropdown-item colorGold">Formularios</a></li>
+                    <li><a href="/documentacion" class="dropdown-item">Documentación</a></li>
+                    <li><a href="/periodico_ambiental" class="dropdown-item">Periódico Ambiental</a></li>
                 </ul>
             </li>
         </ul>
     </div>
 
     <div class="btnsRedireccionContainer">
-        <a href="https://www.mipagoamigo.com/MPA_WebSite/ServicePayments/StartPayment?id=12765&searchedCategoryId=&searchedAgreementName=DELTHAC%201%20SEGURIDAD%20LTDA%20BD" target="_blank" rel="noopener noreferrer" class="pseBtn" aria-label="Redireccion Mi Pago Amigo">
+        <a href="#"  rel="noopener noreferrer" class="pseBtn" aria-label="Redireccion Mi Pago Amigo">
             <img src="/pse-logo.webp" alt="Logo pagos delthac por PSE" class="headerLogoPagosPSE">
         </a>
 
         <div class="">
-            <a href="http://190.131.211.18:81/portal_externo/index.php" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-header-page" aria-label="Redireccion Portal de Empleados">Portal de Empleados</a>
+            <a href="#"  rel="noopener noreferrer" class="btn btn-primary btn-header-page" aria-label="Redireccion Portal de Empleados">Portal de Empleados</a>
         </div>
     </div>
 
@@ -86,22 +91,22 @@
         <div class="menuContainer">
             <ul class="nav-list-toggle">
                 <li class="nav-item">
-                    <a href="#Servicios" class="nav-link" aria-label="Redireccion seccion de pagina">
+                    <a href="/#Servicios" class="nav-link" aria-label="Redireccion seccion de pagina">
                         Servicios
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#Nosotros" class="nav-link" aria-label="Redireccion seccion de pagina">
+                    <a href="/#Nosotros" class="nav-link" aria-label="Redireccion seccion de pagina">
                         Nosotros
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#Ubicaciones" class="nav-link" aria-label="Redireccion seccion de pagina">
+                    <a href="/#Ubicaciones" class="nav-link" aria-label="Redireccion seccion de pagina">
                         Ubicaciones
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#Contacto" class="nav-link" aria-label="Redireccion seccion de pagina">
+                    <a href="/#Contacto" class="nav-link" aria-label="Redireccion seccion de pagina">
                         Contacto
                     </a>
                 </li>
@@ -113,8 +118,8 @@
                         </svg>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/documentos_pdf/pdfPruebas.pdf" target="_blank" class="dropdown-item">Documentos</a></li>
-                        <li><a href="/documentos_pdf/pdfPruebas.pdf" target="_blank" class="dropdown-item">Formularios</a></li>
+                        <li><a href="/documentacion" class="dropdown-item">Documentación</a></li>
+                        <li><a href="/periodico_ambiental" class="dropdown-item">Periódico Ambiental</a></li>
                     </ul>
                 </li>
             </ul>
@@ -193,12 +198,6 @@
         });
     }
 
-    // Los enlaces del menú desplegable NO cierran el sidebar
-    // let objDropdownLinks = document.querySelectorAll('.dropdown-item') as NodeListOf<HTMLAnchorElement>;
-    // objDropdownLinks.forEach(link => {
-    //     link.addEventListener('click', closeSidebar);
-    // });
-
     let objHeaderPage = document.getElementById('headerPage') as HTMLDivElement;
     let objNavLinks = document.querySelectorAll('.nav-link') as NodeListOf<HTMLAnchorElement>;
     let objHeaderLogoDelthac = document.getElementById('headerLogoDelthac') as HTMLImageElement;
@@ -208,9 +207,47 @@
     // Función para manejar la visibilidad del botón con throttling
     function handleScroll() {
         const posicion = window.scrollY;
-        const flagVisible = posicion > vwInicial;
-        const flagOcultar = posicion < vwInicial - 50;
         
+        // Buscar la sección CTA (que tiene fondo azul)
+        const ctaSection = document.querySelector('.cta-section');
+        const footerSection = document.querySelector('.footer');
+        const objClsQuienesSomos = document.getElementById('clsQuienesSomos');
+        let isOverBlueSection = false;
+        let isOverFooter = false;
+        let isOverClsQuienesSomos = false;
+        
+        if (ctaSection && footerSection && objClsQuienesSomos) {
+            const ctaRect = ctaSection.getBoundingClientRect();
+            const footerRect = footerSection.getBoundingClientRect();
+            const clsQuienesSomosRect = objClsQuienesSomos.getBoundingClientRect();
+            const headerHeight = 90; // altura del header
+            isOverBlueSection = ctaRect.top <= headerHeight && ctaRect.bottom >= headerHeight;
+            isOverFooter = footerRect.top <= headerHeight && footerRect.bottom >= headerHeight;
+            isOverClsQuienesSomos = clsQuienesSomosRect.top <= headerHeight && clsQuienesSomosRect.bottom >= headerHeight;
+        }
+        
+        //Si está sobre la sección azul, aplicar estilos especiales
+        if (isOverBlueSection || isOverFooter || isOverClsQuienesSomos) {
+            objHeaderPage?.classList.remove('headerBody');
+            displayNavItem?.classList.remove('colorRed');
+            objNavLinks.forEach(link => {
+                link.classList.remove('blackText');
+                link.classList.remove('colorRed');
+            });
+            objHeaderLogoDelthac.src = '/logo_delthac1_plateado.png';
+        }else{
+            objHeaderPage?.classList.add('headerBody');
+            displayNavItem?.classList.add('colorRed');
+            objNavLinks.forEach(link => {
+                link.classList.add('blackText');
+                link.classList.add('colorRed');
+            });
+            objHeaderLogoDelthac.src = '/logo_delthac1_red.png';
+        }
+    }
+    
+    // Función para verificar la posición inicial al cargar la página
+    function checkPosition() {
         // Buscar la sección CTA (que tiene fondo azul)
         const ctaSection = document.querySelector('.cta-section');
         const footerSection = document.querySelector('.footer');
@@ -260,4 +297,7 @@
             ticking = true;
         }
     });
+    
+    // Verificar la posición inicial al cargar la página
+    checkPosition();
 </script>

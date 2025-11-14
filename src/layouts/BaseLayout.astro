@@ -1,0 +1,21 @@
+---
+const { title = "Delthac1 Seguridad", description = "Compañía especializada en la prestación integral de servicios de vigilancia y seguridad privada." } = Astro.props;
+---
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description}>
+		<meta property="og:title" content={title}>
+		<meta property="og:description" content="Compañía especializada en la prestación integral de servicios de vigilancia y seguridad privada.">
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://delthac1.com/">
+		<script src="https://unpkg.com/scrollreveal"></script>
+		<title>{title}</title>
+	</head>
+	<body>
+        <slot />
+	</body>
+</html>

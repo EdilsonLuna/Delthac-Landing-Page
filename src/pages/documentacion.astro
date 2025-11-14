@@ -1,0 +1,88 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../layouts/Header.astro";
+import Footer from "../layouts/Footer.astro";
+import BodyLayout from "../layouts/BodyLayout.astro";
+import "../styles/documentacion.css";
+---
+
+<BaseLayout title="Documentación Delthac1" description="Descarga de documentación asociada a Delthac1 Seguridad">
+    <Header/>
+    <BodyLayout>
+        <div class="documentacion-container">
+            <h1 class="documentacion-titulo">Documentación</h1>
+            <p class="documentacion-descripcion">Descarga los documentos y formularios necesarios para nuestros servicios de seguridad</p>
+            
+            <div class="tarjetas-grid">
+                <div class="tarjeta-documento">
+                    <div class="tarjeta-header">
+                        <div class="pdf-badge">
+                            <svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                            </svg>
+                            <span>PDF</span>
+                        </div>
+                        <h3 class="documento-titulo">Documento de Pruebas</h3>
+                    </div>
+                    <p class="documento-descripcion">Documento de ejemplo para pruebas del sistema de descargas</p>
+                    <div class="tarjeta-footer">
+                        <a href="/documentos_pdf/pdfPruebas.pdf" download target="_blank" class="btn btn-primary btn-large" aria-label="Redireccion Soporte WhatsApp">
+                            <svg class="download-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"/>
+                            </svg>
+                            Descargar PDF
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de ejemplo para futuros documentos -->
+                <div class="tarjeta-documento">
+                    <div class="tarjeta-header">
+                        <div class="pdf-badge">
+                            <svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                            </svg>
+                            <span>PDF</span>
+                        </div>
+                        <h3 class="documento-titulo">Formulario de Solicitud</h3>
+                    </div>
+                    <p class="documento-descripcion">Formulario para solicitar servicios de seguridad privada</p>
+                    <div class="tarjeta-footer">
+                        <a href="#" class="btn btn-primary btn-large btn-disabled" onclick="return false;">
+                            Próximamente
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tarjeta-documento">
+                    <div class="tarjeta-header">
+                        <div class="pdf-badge">
+                            <svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                            </svg>
+                            <span>PDF</span>
+                        </div>
+                        <h3 class="documento-titulo">Manual de Procedimientos</h3>
+                    </div>
+                    <p class="documento-descripcion">Manual completo de procedimientos de seguridad</p>
+                    <div class="tarjeta-footer">
+                        <a href="#" class="btn btn-primary btn-large btn-disabled" onclick="return false;">
+                            Próximamente
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </BodyLayout>
+    <Footer/>
+</BaseLayout>
+
+<script>
+    ScrollReveal().reveal(".tarjeta-documento", {
+        duration: 1200,
+        origin: "top",
+        distance: "50px",
+        interval: 200,
+        reset: false,
+    });
+</script>

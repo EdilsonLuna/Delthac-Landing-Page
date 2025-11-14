@@ -1,5 +1,6 @@
 ---
 import { rutaWhatsappSoporte } from '../ts/constants';
+import '../styles/body.css';
 
 //Listado de servicios con imágenes
 let listaServicios = [
@@ -7,37 +8,43 @@ let listaServicios = [
         'id': 'vigilancia',
         'titulo': 'Vigilancia física fija y móvil',
         'descripcion': 'Prestamos servicios de vigilancia con personal altamente capacitado, tanto en puestos fijos como en recorridos móviles, garantizando la protección permanente de instalaciones, bienes y personas.',
-        'imagen': '/guarda-seguridad-privada.jpg'
+        'imagen': '/guarda-seguridad-privada.jpg',
+        'ruta': '/servicios/vigilancia'
     },
     {
         'id': 'escoltas',
         'titulo': 'Escoltas personales y vehiculares',
         'descripcion': 'Brindamos acompañamiento y protección especializada a personas y vehículos, con personal entrenado en protocolos de seguridad preventiva y reacción inmediata.',
-        'imagen': '/supervisores.jpg'
+        'imagen': '/supervisores.jpg',
+        'ruta': '/servicios/escoltas'
     },
     {
         'id': 'electronica',
         'titulo': 'Seguridad electrónica y monitoreo',
         'descripcion': 'Ofrecemos soluciones tecnológicas en sistemas de alarmas, control de accesos, cámaras de vigilancia y monitoreo remoto, que fortalecen la protección de infraestructuras y activos.',
-        'imagen': '/monitoreo_camaras.jpg'
+        'imagen': '/monitoreo_camaras.jpg',
+        'ruta': '/servicios/electronica'
     },
     {
         'id': 'canina',
         'titulo': 'Vigilancia canina especializada',
         'descripcion': 'Contamos con unidades caninas entrenadas para labores de defensa controlada, detección de narcóticos y explosivos, complementando de manera efectiva la seguridad física.',
-        'imagen': '/canino_delthac1.png'
+        'imagen': '/canino_delthac1.png',
+        'ruta': '/servicios/canina'
     },
     {
         'id': 'asesoria',
         'titulo': 'Asesoría, investigación y estudios de confiabilidad',
         'descripcion': 'Realizamos evaluaciones de seguridad, procesos de poligrafía, verificación de antecedentes y análisis de confiabilidad del personal, con el fin de apoyar a las organizaciones en la toma de decisiones estratégicas.',
-        'imagen': '/asesoria.jpeg'
+        'imagen': '/asesoria.jpeg',
+        'ruta': '/servicios/asesoria'
     },
     {
         'id': 'investigacion',
         'titulo': 'Investigación y análisis de riesgos',
         'descripcion': 'Desarrollamos estudios integrales de seguridad, análisis de vulnerabilidades y planes de protección personalizados para cada organización.',
-        'imagen': '/analisis_riesgos.jpg'
+        'imagen': '/analisis_riesgos.jpg',
+        'ruta': '/servicios/investigacion'
     }
 ];
 
@@ -101,7 +108,7 @@ let listaUbicaciones = [
             
             <div class="services-grid">
                 {listaServicios.map((servicio) => (
-                    <article class="service-card" data-service={servicio.id}>
+                    <article class="service-card" data-service={servicio.id} data-ruta={servicio.ruta}>
                         <div class="service-card-header">
                             <div class="service-header-bg" style={`background-image: url(${servicio.imagen})`}></div>
                         </div>
@@ -109,6 +116,9 @@ let listaUbicaciones = [
                             <h3>{servicio.titulo}</h3>
                             <p>{servicio.descripcion}</p>
                         </div>
+                        {/* <div class="service-card-footer">
+                            <a href={servicio.ruta} class="btn btn-primary btn-large" aria-label="Redireccion a servicio">Ir al servicio</a>
+                        </div> */}
                     </article>
                 ))}
             </div>
@@ -243,11 +253,7 @@ let listaUbicaciones = [
                                 <b>{listaUbicaciones[0].zona}</b>
                             </div>
                         </div>
-                        <div class="card_content">
-                            <div class="mapContainer">
-                                <iframe id="iframeMapaUbicacion" title="Mapa de ubicaciones de Delthac1" src={listaUbicaciones[0].src} style="border:0;" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="mapaGoogleUbicacion"></iframe>
-                            </div>
-                        </div>
+                        <iframe id="iframeMapaUbicacion" title="Mapa de ubicaciones de Delthac1" src={listaUbicaciones[0].src} style="border:0;" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="mapaGoogleUbicacion"></iframe>
                     </div>
                 </div>
             </div>
@@ -390,6 +396,18 @@ let listaUbicaciones = [
                 const idZona = item.getAttribute('data-zona');
                 if (idZona) {
                     cambiarUbicacionMaps(idZona);
+                }
+            });
+        });
+
+        // Agregar event listeners a todos los elementos de servicio
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const serviceId = card.getAttribute('data-service');
+                const serviceRuta = card.getAttribute('data-ruta');
+                if (serviceId && serviceRuta) {
+                    window.location.href = serviceRuta;
                 }
             });
         });
